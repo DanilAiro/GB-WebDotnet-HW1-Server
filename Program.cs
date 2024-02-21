@@ -5,11 +5,14 @@ namespace Seminar1;
 
 internal class Program
 {
-  static async Task Main(string[] args)
+  static void Main(string[] args)
   {
     var cs = new ChatServer();
 
-    await cs.Run();
+    cs.Run();
+
+    Console.ReadKey();
+    Environment.Exit(0);
   }
 }
 
