@@ -73,7 +73,6 @@ public class ChatServer
       {
         if (!string.IsNullOrEmpty(message = reader.ReadLine()))
         {
-
           foreach (var client in clients)
           {
             if (client.Connected && client.GetHashCode() != tcpClient.GetHashCode())
@@ -84,6 +83,8 @@ public class ChatServer
               writer.Flush();
             }
           }
+
+          Console.WriteLine(tcpClient.GetHashCode() + ": " + message);
         }
       }
     }
