@@ -75,13 +75,17 @@ public class ChatServer
         {
           foreach (var client in clients)
           {
+            StreamWriter writer = new StreamWriter(client.GetStream());
+            
             if (client.Connected && client.GetHashCode() != tcpClient.GetHashCode())
             {
-              StreamWriter writer = new StreamWriter(client.GetStream());
-
               await writer.WriteLineAsync(tcpClient.GetHashCode() + ": " + message);
-              writer.Flush();
             }
+            else if (client.Connected)
+            {
+              await writer.WriteLineAsync("Сообщение доставлено!");
+            }
+            writer.Flush();
           }
 
           Console.WriteLine(tcpClient.GetHashCode() + ": " + message);
