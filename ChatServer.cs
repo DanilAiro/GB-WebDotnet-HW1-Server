@@ -7,7 +7,6 @@ namespace Server
   {
     TcpListener? _listener;
     static List<TcpClient> clients = [];
-    static CancellationToken? ct2;
 
     public ChatServer(IPEndPoint endPoint)
     {
