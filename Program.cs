@@ -13,7 +13,7 @@ internal class Program
     IPEndPoint iPEndPoint = new(IPAddress.Any, 55555);
     using ChatServer cs = new(iPEndPoint);
 
-    var task = cs.Run(ct);
+    cs.Run(ct);
 
     string? serverMessage = string.Empty;
     while (!serverMessage.Equals("exit", StringComparison.InvariantCultureIgnoreCase) &&
