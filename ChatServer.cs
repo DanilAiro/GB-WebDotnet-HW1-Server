@@ -3,16 +3,10 @@ using System.Net;
 
 namespace Server
 {
-  public class ChatServer:IDisposable
+  public class ChatServer(IPEndPoint endPoint):IStartable
   {
-    TcpListener? _listener;
+    TcpListener? _listener = new(endPoint);
     static List<TcpClient> clients = [];
-
-    public ChatServer(IPEndPoint endPoint)
-    {
-      if (endPoint != null)
-        _listener = new TcpListener(endPoint);
-    }
 
     public async Task Run(CancellationToken ct)
     {

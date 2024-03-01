@@ -28,9 +28,8 @@ internal class Program
     }
     finally
     {
+      Console.WriteLine("Сервер прекращает свою работу!");
       cs.Dispose();
     }
-
-    Console.ReadKey();
   }
 }
